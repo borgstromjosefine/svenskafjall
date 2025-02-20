@@ -17,7 +17,7 @@ var app = express();
 // Lägg till CORS-middleware för att tillåta anrop från din frontend
 app.use(
   cors({
-    origin: "http://127.0.0.1:8080", // Tillåt anrop från denna domän
+    origin: "*", // Tillåt alla domäner att göra anrop
     methods: ["GET", "POST", "PUT", "DELETE"], // Tillåt de HTTP-metoder du behöver
     allowedHeaders: ["Content-Type"], // Tillåt dessa headers
   })
