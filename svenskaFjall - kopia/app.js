@@ -43,8 +43,8 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "public")));
 
+// Lägg till ett API-anrop för fjällen
 app.get("/api/fjall", function (req, res) {
-  // Här kan du hämta data från MongoDB och skicka som JSON
   res.json({ message: "Fjäll-data här!" });
 });
 
