@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svenska Fjäll</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Svenska fjäll</h1>
+    <div id="fjall-container"></div>
+
+    <script>
+        fetch("/fjall")
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("fjall-container");
+                data.forEach(fjall => {
+                    const fjallDiv = document.createElement("div");
+                    fjallDiv.classList.add("fjall-card");
+
+                    fjallDiv.innerHTML = `
+                        <h2>${fjall.name}</h2>
+                        <p><strong>Höjd:</strong> ${fjall.height} </p>
+                        <p><strong>Plats:</strong> ${fjall.location}</p>
+                        <p><strong>Om ${fjall.name}:</strong> ${fjall.about}</p>
+                    `;
+
+                    container.appendChild(fjallDiv);
+                });
+            })
+            .catch(error => console.error("Fel vid hämtning:", error));
+    </script>
+</body>
+
+</html>
