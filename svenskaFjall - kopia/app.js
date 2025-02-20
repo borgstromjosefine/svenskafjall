@@ -31,8 +31,9 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/fjall-page", function (req, res) {
-  res.sendFile(path.join(__dirname, "public", "fjall.html"));
+app.get("/api/fjall", function (req, res) {
+  // Här kan du hämta data från MongoDB och skicka som JSON
+  res.json({ message: "Fjäll-data här!" });
 });
 
 app.use("/", indexRouter);
