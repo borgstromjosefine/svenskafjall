@@ -5,11 +5,23 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+// Lägg till CORS här
+var cors = require("cors");
+
 var indexRouter = require("./routes/index");
 var fjallRouter = require("./routes/fjall");
 var usersRouter = require("./routes/users");
 
 var app = express();
+
+// Lägg till CORS-middleware för att tillåta anrop från din frontend
+app.use(
+  cors({
+    origin: "http://127.0.0.1:8080", // Tillåt anrop från denna domän
+    methods: ["GET", "POST", "PUT", "DELETE"], // Tillåt de HTTP-metoder du behöver
+    allowedHeaders: ["Content-Type"], // Tillåt dessa headers
+  })
+);
 
 mongoose.connect(
   "mongodb+srv://whippetpaws:Josefine95@test.sm713.mongodb.net/svenskafjall_db?retryWrites=true&w=majority&appName=Test",
